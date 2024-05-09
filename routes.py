@@ -6,17 +6,13 @@ app = Flask(__name__)
 def homepage():
     return render_template("home.html")
 
-@app.route('/about')
-def about():
-    return render_template("layout.html")
-
 @app.route('/history')
 def history():
-    return render_template("layout.html")
+    return render_template("history.html")
 
 @app.route('/all_teams')
 def all_teams():
-    return "all_teams"
+    return render_template("all_teams.html")
 
 @app.route('/goalie/<int:id>')
 def goaltender(id):
