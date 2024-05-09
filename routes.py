@@ -22,12 +22,14 @@ def all_teams():
 def goaltender(id):
     conn = sqlite3.connect("goalies.db")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM Goaltender WHERE Goaltender_ID=?",(id,))
+    cur.execute("SELECT * FROM Statistics JOIN Goaltender ON Statistics.Goaltender_ID = Goaltender.ID WHERE ID=?;",(id,))
+    # cur.execute("SELECT * FROM Goaltender WHERE Goaltender_ID=?",(id,))
     goaltender = cur.fetchone()
     return render_template('goaltender.html', goaltender=goaltender)
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
+ 
+#  WHERE Goaltender_ID=?",(id,))
     
