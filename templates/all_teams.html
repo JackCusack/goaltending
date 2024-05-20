@@ -3,6 +3,29 @@
     <head>
         <title>Goaltending</title>
         <link rel="stylesheet" href="/static/style.css">
+        <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid rgb(0, 0, 0);
+            float: left;
+            width: 180px;
+          }
+          
+          div.gallery:hover {
+            border: 1px solid rgb(255, 255, 255);
+          }
+          
+          div.gallery img {
+            width: 100%;
+            height: auto;
+          }
+          
+          div.desc {
+            padding: 15px;
+            text-align: center;
+          }
+          </style>
+    
     </head>
     
     <body>
@@ -24,13 +47,24 @@
         </main>
         <img src = "" width = 300>
         
-        
+        <div class="gallery">
         <a href="http://127.0.0.1:5000/goalie/1"> <img src="static/images/montrealcanadiens.png" width = "10%" />Montreal Canadiens</a>
+        </div>
+        <div class="gallery">
         <a href="http://127.0.0.1:5000/goalie/2"><img src="static/images/torontomapleleafs.png" width = "10%" />Toronto Maple Leafs</a>
+        </div>
+        <div class="gallery">
         <a href="http://127.0.0.1:5000/goalie/3"><img src="static/images/bostonbruins.jpg" width = "10%" />Boston Bruins</a>
-        <a href="http://127.0.0.1:5000/goalie/4"><img src="static/images/chicagoblackhawks.png" width = "10%" />Chicago Blackhawks</a>
+        </div>
+        <div class="gallery">
+        <a href="http://127.0.0.1:5000/goalie/4"><img src="static/images/chicagoblackhawks.jpg" width = "10%" />Chicago Blackhawks</a>
+        </div>
+        <div class="gallery">
         <a href="http://127.0.0.1:5000/goalie/5"><img src="static/images/detroitredwings.jpg" width = "10%" />Detroit Red Wings</a>
-        <a href="http://127.0.0.1:5000/goalie/6"><img src="static/images/torontomapleleafs.png" width = "10%" />New York Rangers</a>
+        </div>
+        <div class="gallery">
+        <a href="http://127.0.0.1:5000/goalie/6"><img src="static/images/newyorkrangers.jpg" width = "10%" />New York Rangers</a>
+        </div>
 
         <footer>
         <p>The Footer &copy;2024</p>
