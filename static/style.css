@@ -41,10 +41,9 @@ footer {
   
 
 
-
   
 
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: rgb(82, 19, 19);
+    background-color: darkred;
   }
