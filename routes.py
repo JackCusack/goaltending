@@ -14,6 +14,7 @@ def history():
 def all_teams():
     return render_template("all_teams.html")
 
+#Returns statistics data from the goalie database in SQL to the goaltender page
 @app.route('/goalie/<int:id>')
 def goaltender(id):
     conn = sqlite3.connect("goalies.db")
@@ -22,7 +23,6 @@ def goaltender(id):
     # cur.execute("SELECT * FROM Goaltender WHERE Goaltender_ID=?",(id,))
     goaltender = cur.fetchone()
     return render_template('goaltender.html', goaltender=goaltender)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
