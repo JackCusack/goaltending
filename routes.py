@@ -14,6 +14,10 @@ def history():
 def all_teams():
     return render_template("all_teams.html")
 
+@app.route('/tipsandtricks')
+def tipsandtricks():
+    return render_template("tipsandtricks.html")
+
 #Returns statistics data from the goalie database in SQL to the goaltender page
 @app.route('/goalie/<int:id>')
 def goaltender(id):
