@@ -1,29 +1,37 @@
-body{font-family: "Comic Sans MS"; color:rgb(247, 247, 247); background-color:rgb(41, 41, 41);}
+body{
+  font-family: "Comic Sans MS"; color:rgb(247, 247, 247); 
+  background-color:rgb(41, 41, 41);
+  }
 
-p{color:rgb(255, 255, 255);}
+p {
+  color:rgb(255, 255, 255);
+  }
 
 footer {
-    position: fixed;
-    left: 0;
-    bottom:0;
-    width: 100%;
-    text-align: center;
-    padding: 1px;
-    background-color: rgb(100, 100, 100);
-    color: white;
+  position: fixed;
+  left: 0;
+  bottom:0;
+  width: 100%;
+  text-align: center;
+  padding: 1px;
+  background-color: rgb(100, 100, 100);
+  color: white;
   }
   
-  h1 {
-    text-shadow: 4px 4px #363636;
+h1 {
+  text-shadow: 4px 4px #363636;
   }
  
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(100, 100, 100);
+h2, h3, h5, h6 {
+  padding: 20px;
+  }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(100, 100, 100);
   }
   
   li {
@@ -38,12 +46,41 @@ footer {
     text-decoration: none;
   }
   
+  /*styling for NHL Team goalies page with the logos and gallery layout*/
+  div.gallery {
+    margin: 5px;
+    border: 2px solid darkred;
+    float: left;
+    width: 180px;
+  }
   
-
-
+  div.gallery:hover {
+    border: 2px solid rgb(255, 255, 255);
+  }
   
+  div.gallery img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
 
-  /* Change the link color to #111 (black) on hover */
+    /*h4 is the text underneath the logos in the gallery page ie NHL team goalies*/
+    h4 {
+      color: white;
+      text-align: center;
+      text-decoration-line: underline;
+      text-decoration-color: white;
+    }
+
+  /* Change the navbar link color on hover */
   li a:hover {
     background-color: darkred;
   }
+
+  /*img {
+    float:right;
+  }*/
