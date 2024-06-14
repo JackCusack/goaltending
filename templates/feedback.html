@@ -1,0 +1,32 @@
+{%extends "layout.html"%} 
+{%block content%}
+<!doctype html>
+<html lang="en">
+ 
+<center>
+<h2>Feedback / Recommendations</h2>
+
+    <div class="container">
+        <form action="action_page.php">
+      
+          <label for="fname">Name</label>
+          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+      
+          <label for="topic">Topic</label>
+          <select id="topic" name="topic">
+            <option value="issue">Issue</option>
+            <option value="recommendation">Recommendation</option>
+            <option value="other">Other</option>
+          </select></div>
+      <div>
+          
+          <h4>Description</h4>
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:50px; width:600px"></textarea>
+      
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </center>
+</html>
+
+{%endblock%}

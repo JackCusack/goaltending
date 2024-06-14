@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import sqlite3
 app = Flask(__name__)
 
@@ -28,8 +28,27 @@ def goaltender(id):
     goaltender = cur.fetchone()
     return render_template('goaltender.html', goaltender=goaltender)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
  
 #  WHERE Goaltender_ID=?",(id,))
     
+
+
+#Feedback page
+@app.route('/feedback')
+def feedback():
+    return render_template('feedback.html')
+
+def submit_feedback():
+    name = request.form['name']
+    message = request.form['message']
+    conn  = sqlite3.connect('goalies.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO Feedback FROM (name, message, topic) VALUES (?,?,?)', (name, message))
+    conn.commit()
+    conn.close()
+
+    return 'Feedback sent!'
+
+if __name__ == "__main__":
+    app.run(debug=True)
