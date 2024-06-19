@@ -1,0 +1,30 @@
+{%extends "layout.html"%} 
+{%block content%}
+<!doctype html>
+
+<h2>Admin page</h2>
+
+<p>{{feedback}}</p>
+
+
+<div>
+    <center>
+    <table>
+        <tr bgcolor="grey">
+            <th>Name</th>
+            <th>Message</th>
+            <th>Topic</th>
+        </tr>
+        
+        <tr bgcolor="darkred">
+            <td>{{feedback[1]}}</td>
+            <td>{{feedback[1]}}</td>
+            <td>{{feedback[1]}}</td>
+        </tr>   
+
+    </table>
+    </center>
+    </div>
+
+</html>
+{%endblock%}

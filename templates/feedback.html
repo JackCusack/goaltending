@@ -7,25 +7,26 @@
 <h2>Feedback / Recommendations</h2>
 
     <div class="container">
-        <form action="action_page.php">
-      
-          <label for="fname">Name</label>
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <form action="/submitedfeedback" method="post">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name..">
       
           <label for="topic">Topic</label>
           <select id="topic" name="topic">
             <option value="issue">Issue</option>
             <option value="recommendation">Recommendation</option>
             <option value="other">Other</option>
-          </select></div>
-      <div>
+          </select>
+        </div>
           
+      <div>
           <h4>Description</h4>
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:50px; width:600px"></textarea>
-      
+          <textarea id="message" name="message" placeholder="Write something..." style="height:50px; width:600px"></textarea>
+          <br>
           <input type="submit" value="Submit">
         </form>
       </div>
+
     </center>
 </html>
 

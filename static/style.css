@@ -106,7 +106,7 @@ ul {
     grid-template-columns: center 50px center 50px;
     gap: 10px;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid rgb(179, 179, 179);
     box-shadow:0 0 10px rgb(48, 39, 39);
   }
 
@@ -128,3 +128,17 @@ ul {
   text-align: center;
 }
 
+.home-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: darkred;
+  border: black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.home-button:hover {
+  background-color: rgb(83, 0, 0);
+}
