@@ -1,11 +1,26 @@
-body{
+body {
+  transition: background-color 0.3s, color 0.3s;
+  }
+
+body.dark-mode {
   font-family: "Comic Sans MS"; color:rgb(247, 247, 247); 
   background-color:rgb(41, 41, 41);
   }
 
-p {
+body.light-mode {
+  font-family: "Comic Sans MS"; color:rgb(41, 41, 41); 
+  background-color:rgb(247, 247, 247);
+  }
+
+p.dark-mode {
   font-size:large ;
   color:lightgrey;
+  padding: 5px;
+  }
+
+p.light-mode {
+  font-size:large ;
+  color:rgb(0, 0, 0);
   padding: 5px;
   }
 
@@ -123,7 +138,6 @@ ul {
   width: 50%;
   padding: 20px;
   border: 2px solid rgb(0, 0, 0);
-  box-shadow:0 0 10px rgb(192, 13, 13);
   background-color: rgb(100,100,100);
   text-align: center;
 }
@@ -142,3 +156,6 @@ ul {
 .home-button:hover {
   background-color: rgb(83, 0, 0);
 }
+
+
+
