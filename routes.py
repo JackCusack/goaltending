@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template, redirect, url_for, flash
 import sqlite3
 app = Flask(__name__)
+app.secret_key ='your_secret_key'
 
 @app.route('/')
 def homepage():
@@ -61,6 +62,22 @@ def admin():
     feedback = cur.fetchall()
     conn.close()
     return render_template("admin.html", feedback=feedback)
+
+#login page
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+    conn = sqlite3.connect('goalies.db')
+    user = conn.execute('SELECT * FROM Users WHERE username = ? AND password = ?', (username, password)).fetchone()
+    conn.close()
+
+    if user:
+        flash('Login successful!', 'success')
+        return redirect('/')
+    else:
+        flash('Invalid username or password', 'Try again')
+        return redirect('/')
 
 if __name__ == "__main__":
     app.run(debug=True)
