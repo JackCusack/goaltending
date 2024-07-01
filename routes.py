@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for, flash
+from flask import Flask, request, render_template, redirect, flash
 import sqlite3
 app = Flask(__name__)
 app.secret_key ='your_secret_key'
@@ -66,18 +66,55 @@ def admin():
 #login page
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
+    username = request.form.get['username']
+    password = request.form.get['password']
     conn = sqlite3.connect('goalies.db')
     user = conn.execute('SELECT * FROM Users WHERE username = ? AND password = ?', (username, password)).fetchone()
+    conn.commit()
     conn.close()
 
     if user:
         flash('Login successful!', 'success')
-        return redirect('/')
+        return render_template("home.html")
     else:
         flash('Invalid username or password', 'Try again')
-        return redirect('/')
+        return render_template("login.html")
+
+# @app.route('/signup', methods=['GET', 'POST'])
+# def signup():
+#       if request.method == 'POST':
+#         username = request.form['username']
+#         password = request.form['password']
+
+#         with sqlite3.connect('goalies.db') as con:
+#             cur = con.cursor()
+#             cur.execute("SELECT * FROM Users WHERE username = ?", (username,))
+#             user = cur.fetchone()
+#             if user:
+#                 flash('Username already exists. Please choose a different username.')
+#             else:
+#                 cur.execute("INSERT INTO Users (username, password) VALUES (?, ?)", (username, password))
+#                 con.commit()
+#                 con.close()
+#                 flash('Account created successfully! You can now log in.')
+#                 return render_template("login.html")
+
+#         return render_template('signup.html')
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    conn = sqlite3.connect('goalies.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO Users (username, password) VALUES (?, ?)'
+        (username, password))
+    conn.commit()
+    conn.close()
+
+    return render_template('login.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
