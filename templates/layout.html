@@ -32,6 +32,14 @@
             <script src="/static/script.js"></script>
         </body>
 
+        <div class="user-info" id="user-info">
+            {% if username %}
+                Logged in as: {{ username[2] }}
+            {% else %}
+                <a href="/login">Login</a>
+            {%endif%}
+        </div>
+
         <main>
         {%block content%}{%endblock%}
         </main>

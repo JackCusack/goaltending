@@ -47,6 +47,16 @@
 
                 <button type="submit">Login</button>
             </form>
+            <p>Don't have an account? <a href="http://127.0.0.1:5000/signup">Sign up</a></p>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
         </div>
 
         <footer>

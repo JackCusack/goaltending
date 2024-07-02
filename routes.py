@@ -1,11 +1,15 @@
-from flask import Flask, request, render_template, redirect, flash
+from flask import Flask, request, render_template, redirect, flash, session
 import sqlite3
 app = Flask(__name__)
 app.secret_key ='your_secret_key'
 
 @app.route('/')
 def homepage():
-    return render_template("home.html")
+    if 'username' in session:
+        username = session['username']
+    else:
+        username = None
+    return render_template("home.html", username=username)
 
 @app.route('/history')
 def history():
@@ -63,58 +67,59 @@ def admin():
     conn.close()
     return render_template("admin.html", feedback=feedback)
 
-#login page
-@app.route('/login', methods=['POST'])
+#Login and sign up  function...
+
+@app.route('/login')
 def login():
-    username = request.form.get['username']
-    password = request.form.get['password']
+    return render_template('login.html')
+
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
+#login 
+@app.route('/login', methods=['POST'])
+def user_login():
+    username = request.form['username']
+    password = request.form['password']
     conn = sqlite3.connect('goalies.db')
     user = conn.execute('SELECT * FROM Users WHERE username = ? AND password = ?', (username, password)).fetchone()
     conn.commit()
     conn.close()
 
     if user:
+        session['username'] = username
         flash('Login successful!', 'success')
         return render_template("home.html")
     else:
         flash('Invalid username or password', 'Try again')
         return render_template("login.html")
+    
+#Sign up
+@app.route('/signup', methods=['GET', 'POST'])
+def user_signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
 
-# @app.route('/signup', methods=['GET', 'POST'])
-# def signup():
-#       if request.method == 'POST':
-#         username = request.form['username']
-#         password = request.form['password']
+        with sqlite3.connect('goalies.db') as conn:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM Users WHERE username = ?", (username,))
+            user = cur.fetchone()
+            if user:
+                flash('Username already exists. Please choose a different username.')
+            else:
+                cur.execute("INSERT INTO Users (username, password) VALUES (?, ?)", (username, password))
+                conn.commit()
+                flash('Account created successfully! You can now log in.')
+                return render_template("login.html")
 
-#         with sqlite3.connect('goalies.db') as con:
-#             cur = con.cursor()
-#             cur.execute("SELECT * FROM Users WHERE username = ?", (username,))
-#             user = cur.fetchone()
-#             if user:
-#                 flash('Username already exists. Please choose a different username.')
-#             else:
-#                 cur.execute("INSERT INTO Users (username, password) VALUES (?, ?)", (username, password))
-#                 con.commit()
-#                 con.close()
-#                 flash('Account created successfully! You can now log in.')
-#                 return render_template("login.html")
+        return render_template('signup.html')
 
-#         return render_template('signup.html')
-
-@app.route('/signup', methods=['POST'])
-def signup():
-    username = request.form.get('username')
-    password = request.form.get('password')
-
-    conn = sqlite3.connect('goalies.db')
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO Users (username, password) VALUES (?, ?)'
-        (username, password))
-    conn.commit()
-    conn.close()
-
-    return render_template('login.html')
-
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return render_template('home.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

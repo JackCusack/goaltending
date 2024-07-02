@@ -177,3 +177,9 @@ input[type="password"] {
   margin-bottom: 20px;
 }
 
+.user-info {
+  font-size:14px;
+  color:rgb(83, 0, 0);
+  float: right;
+}
+
