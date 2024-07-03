@@ -1,131 +1,95 @@
 <!doctype html>
+{%extends "layout.html"%} 
+{%block content%}
 <html>
-    
-    <head>
-        <title>Netminder</title>
-        <link rel="stylesheet" href="/static/style.css">
-        <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-    </head>
-    
-    <body>
+<h2>History of Goaltending</h2>
 
-        <header>
-            <center><h1>Ice Hockey Goaltending</h1></center>
-        </header>
+<hr>
+
+<h3>How did it start?</h3>
         
-        <ul>
-            <li><a href="http://127.0.0.1:5000/"><img src="/static/images/logo.jpg" height="30px"></a></li>
-            <li><a href="http://127.0.0.1:5000/">Home</a></li>
-            <li><a href="http://127.0.0.1:5000/history">History of Goaltending</a></li>
-            <li><a href="http://127.0.0.1:5000/all_teams">NHL Team Goalies</a></li>
-            <li><a href="http://127.0.0.1:5000/tipsandtricks">Tips & Tricks</a></li>
-            <li><a href="http://127.0.0.1:5000/feedback">Feedback</a></li>
-            <li><a href="http://127.0.0.1:5000/login">Login</a></li>
-            <li><a href="http://127.0.0.1:5000/signup">Sign Up</a></li>
-        </ul>
-        
-        <title>Light/Dark Mode Toggle</title>
-        <link rel="stylesheet" href="/static/style.css">
-
-        <body class="dark-mode">
-            <button id="theme-toggle">Toggle Light/Dark Mode</button>
-            <script src="/static/script.js"></script>
-        </body>
-
-        <h2>History of Goaltending</h2>
-
-        <hr>
-
-        <main>
-        {%block content%}{%endblock%}
-        </main>
-
-        <h3>How did it start?</h3>
-        
-        <p>Ice Hockey is thought to have began in the 18th and 19th centuries within Britain and Ireland, evolving from simple stick and ball games. 
-            The North American sport, lacrosse was also thought to have contributed to the development of Ice Hockey. 
-            The first recorded public indoor Ice Hockey game took place in the Victoria Skating Rink of Montreal in 1875 with rules highly similiar to field hockey. 
-            Many of these early games had teams from universities and were often very violent.  
-            The game of Ice Hockey has been refined over the many years, developing more and more rules to keep the game interesting and humane.</p>
+<p>Ice Hockey is thought to have began in the 18th and 19th centuries within Britain and Ireland, evolving from simple stick and ball games. 
+    The North American sport, lacrosse was also thought to have contributed to the development of Ice Hockey. 
+    The first recorded public indoor Ice Hockey game took place in the Victoria Skating Rink of Montreal in 1875 with rules highly similiar to field hockey. 
+    Many of these early games had teams from universities and were often very violent.  
+    The game of Ice Hockey has been refined over the many years, developing more and more rules to keep the game interesting and humane.</p>
 
 <br>
 
-        <center><h8>Victoria Rink in 1893<h8/></center>
-        <center><img src = "static/images/victoriarink1893.jpg" width = 300 
-            alt="Victoria Rink in 1893 with an Ice Hockey game taking place."></center>    
+    <center><h8>Victoria Rink in 1893<h8/></center>
+    <center><img src = "static/images/victoriarink1893.jpg" width = 300 
+        alt="Victoria Rink in 1893 with an Ice Hockey game taking place."></center>    
 
 <br>
 
-        <p>In the early games of undeveloped Ice Hockey, the goaltender did not have any specialised equipment. 
-            Leg pads were eventually adopted in order to protect the goaltenders legs. 
-            The earliest leg pads evolved from cricket pads which were made of leather and stuffed with deer hair.
-            In the 1930s the leg pads were further developed, becoming wider and thicker.
-            The pads eventually had additional rolls added onto them and synthetic leather paired with high density foam started to take over.
-            Around the 2000s, 'box' style leg pads became more popular as the 'butterfly position' became more known and used.</p>
+<p>In the early games of undeveloped Ice Hockey, the goaltender did not have any specialised equipment. 
+    Leg pads were eventually adopted in order to protect the goaltenders legs. 
+    The earliest leg pads evolved from cricket pads which were made of leather and stuffed with deer hair.
+    In the 1930s the leg pads were further developed, becoming wider and thicker.
+    The pads eventually had additional rolls added onto them and synthetic leather paired with high density foam started to take over.
+    Around the 2000s, 'box' style leg pads became more popular as the 'butterfly position' became more known and used.</p>
             
 <br>      
 
-        <center><h8>Jacques Plante in goaltending equipment (1940s)<h8/></center>
-        <center><img src = "static/images/jacquesplantegoaltendergear.jpg" width = 300 
-            alt="Jacques Plante wearing goaltender equipment from the 1940s."></center>
+    <center><h8>Jacques Plante in goaltending equipment (1940s)<h8/></center>
+    <center><img src = "static/images/jacquesplantegoaltendergear.jpg" width = 300 
+        alt="Jacques Plante wearing goaltender equipment from the 1940s."></center>
             
 <br>
 
-        <p>Face protection was not used by goaltenders in a game until 1930 when Clint Benedict wore an American football nose-guard to protect his broken nose.
-            Clint did not continue to wear the mask after his injury.
-            Jacques Plante was the first goaltender to wear a mask 'full-time' and in 1959 he began wearing it outside of practices in a game.
-            The first masks designs were named face huggers as they would cover the entire face and attached directly onto your skin with eye and mouth holes cut in. 
-            Small holes were cut into the masks to help with ventilation.
-            Some goalies prefered to wear player helmets which were plastic and had inner foam with a metal bar cage. 
-            Danglers (curved sheet of plastic) were sometimes attached to these helmets for additional protection around the clavical area.
-            Nowadays goalie helmets are made of a thick stainless steel cage with a carbon fibre and kevlar shell. 
-            The helmet is specifically shaped to deflect and rebound pucks when hit directly in the frontal area. </p>
+<p>Face protection was not used by goaltenders in a game until 1930 when Clint Benedict wore an American football nose-guard to protect his broken nose.
+    Clint did not continue to wear the mask after his injury.
+    Jacques Plante was the first goaltender to wear a mask 'full-time' and in 1959 he began wearing it outside of practices in a game.
+    The first masks designs were named face huggers as they would cover the entire face and attached directly onto your skin with eye and mouth holes cut in. 
+    Small holes were cut into the masks to help with ventilation.
+    Some goalies prefered to wear player helmets which were plastic and had inner foam with a metal bar cage. 
+    Danglers (curved sheet of plastic) were sometimes attached to these helmets for additional protection around the clavical area.
+    Nowadays goalie helmets are made of a thick stainless steel cage with a carbon fibre and kevlar shell. 
+    The helmet is specifically shaped to deflect and rebound pucks when hit directly in the frontal area. </p>
 
 <br>
 
-        <center><h8>Goaltender masks of the 80s<h8/></center>
-        <center><img src = "static/images/goaltendermasks80s.jpg" width = 300 
-            alt="4 goaltender masks from the 80s"></center>
+    <center><h8>Goaltender masks of the 80s<h8/></center>
+    <center><img src = "static/images/goaltendermasks80s.jpg" width = 300 
+        alt="4 goaltender masks from the 80s"></center>
 
 <br>
        
-        <p>Originally, goalies used the same sticks as forwards and defensemen, which were straight and narrow. 
-            However, as the role of the goaltender evolved, so did their gear. 
-            The first major change came with the introduction of a wider blade in the 1920s, designed to better stop pucks. 
-            In the following decades, the curve of the blade was added, providing greater control and accuracy. 
-            The material used in goalie sticks also evolved from wood to fibreglass and composite materials, significantly improving durability and performance. 
-            Modern goalie sticks are now engineered with specific weight distributions and ergonomic features to enhance a goalies ability to block shots and handle the puck, 
-            reflecting the advanced technology and sophisticated design processes behind contemporary hockey equipment.</p>
+<p>Originally, goalies used the same sticks as forwards and defensemen, which were straight and narrow. 
+    However, as the role of the goaltender evolved, so did their gear. 
+    The first major change came with the introduction of a wider blade in the 1920s, designed to better stop pucks. 
+    In the following decades, the curve of the blade was added, providing greater control and accuracy. 
+    The material used in goalie sticks also evolved from wood to fibreglass and composite materials, significantly improving durability and performance. 
+    Modern goalie sticks are now engineered with specific weight distributions and ergonomic features to enhance a goalies ability to block shots and handle the puck, 
+    reflecting the advanced technology and sophisticated design processes behind contemporary hockey equipment.</p>
 
 <br>
 
-        <p>The techniques of ice hockey goaltenders have evolved dramatically over the years, reflecting changes in the game's pace and the advancement of equipment technology. 
-            In the early days, goaltenders primarily relied on a stand-up style, remaining upright and using their stick and skates to block shots. 
-            This approach gradually shifted with the development of the butterfly style in the 1990s, 
-            where goalies drop to their knees and use their leg pads to cover the lower part of the net, effectively blocking low shots. 
-            This style became dominant due to its effectiveness in handling the increasingly powerful and accurate shots from modern players. 
-            Additionally, the RVH (Reverse-VH) technique, where a goalie uses the post to seal off the bottom of the net while on one knee, 
-            has become a crucial tool for handling sharp-angle shots and wraparounds. 
-            Modern goaltenders also emphasise agility, reflexes, and positioning, often training with specialised coaches to enhance these skills. 
-            The integration of video analysis and sports science has further refined their techniques, enabling goalies to anticipate plays and react with split-second precision. 
-            This evolution in goaltending techniques reflects the continuous adaptation to the fast-paced, high-skill demands of contemporary ice hockey.</p>
+<p>The techniques of ice hockey goaltenders have evolved dramatically over the years, reflecting changes in the game's pace and the advancement of equipment technology. 
+    In the early days, goaltenders primarily relied on a stand-up style, remaining upright and using their stick and skates to block shots. 
+    This approach gradually shifted with the development of the butterfly style in the 1990s, 
+    where goalies drop to their knees and use their leg pads to cover the lower part of the net, effectively blocking low shots. 
+    This style became dominant due to its effectiveness in handling the increasingly powerful and accurate shots from modern players. 
+    Additionally, the RVH (Reverse-VH) technique, where a goalie uses the post to seal off the bottom of the net while on one knee, 
+    has become a crucial tool for handling sharp-angle shots and wraparounds. 
+    Modern goaltenders also emphasise agility, reflexes, and positioning, often training with specialised coaches to enhance these skills. 
+    The integration of video analysis and sports science has further refined their techniques, enabling goalies to anticipate plays and react with split-second precision. 
+    This evolution in goaltending techniques reflects the continuous adaptation to the fast-paced, high-skill demands of contemporary ice hockey.</p>
 
 
 <br>
 
-        <center><h8>Side by side comparison of a 80s v a 2000s goalie<h8/></center>
-        <center><img src = "static/images/80svs2000sequipment.jpg" width = 300 
-            alt="side by side comparison of an 80s goalie and 2000s goalie in full gear"></center>
-            </div>
+    <center><h8>Side by side comparison of a 80s v a 2000s goalie<h8/></center>
+    <center><img src = "static/images/80svs2000sequipment.jpg" width = 300 
+        alt="side by side comparison of an 80s goalie and 2000s goalie in full gear"></center>
+
+    </div>
+
 <br>      
 <br>
 <br>      
 <br>
-
-    <footer>
-    <ft>Copyright &copy;2024: Designed by Jack Cusack</ft>
-    </footer>
 
     </body>
-    
+    {%endblock%} 
 </html>

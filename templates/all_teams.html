@@ -1,52 +1,11 @@
 <!doctype html>
-
+{%extends "layout.html"%} 
+{%block content%}
 <html>
-
-  <head>
-    <title>Netminder</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  </head>
-
-    <head>
-
-        <title>Netminder</title>
-        <link rel="stylesheet" href="/static/style.css">
-        <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-    </head>
-    
-    <body>
-
-        <header>
-            <center><h1>Ice Hockey Goaltending</h1></center>
-        </header>
-        
-        <ul>
-          <li><a href="http://127.0.0.1:5000/"><img src="/static/images/logo.jpg" height="30px"></a></li>
-            <li><a href="http://127.0.0.1:5000/">Home</a></li>
-            <li><a href="http://127.0.0.1:5000/history">History of Goaltending</a></li>
-            <li><a href="http://127.0.0.1:5000/all_teams">NHL Team Goalies</a></li>
-            <li><a href="http://127.0.0.1:5000/tipsandtricks">Tips & Tricks</a></li>
-            <li><a href="http://127.0.0.1:5000/feedback">Feedback</a></li>
-            <li><a href="http://127.0.0.1:5000/login">Login</a></li>
-            <li><a href="http://127.0.0.1:5000/signup">Sign Up</a></li>
-          </ul>
-
-          <title>Light/Dark Mode Toggle</title>
-          <link rel="stylesheet" href="/static/style.css">
-  
-          <body class="dark-mode">
-              <button id="theme-toggle">Toggle Light/Dark Mode</button>
-              <script src="/static/script.js"></script>
-          </body>
 
         <h2>NHL Team Goalies</h2>
 
         <hr>
-
-        <main>
-        {%block content%}{%endblock%}
-        </main>
 
         <!Gallery display for all_teams page which shows the logo and name of each team>
         <div class="gallery">
@@ -79,10 +38,6 @@
           alt="New York Rangers Logo"  width = "10%" /><h4>New York Rangers</h4></a>
         </div>
 
-        <footer>
-        <ft>Copyright &copy;2024: Designed by Jack Cusack</ft>
-        </footer>
-
     </body>
-    
+    {%endblock%}
 </html>
