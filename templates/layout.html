@@ -20,10 +20,22 @@
             <li><a href="http://127.0.0.1:5000/all_teams">NHL Team Goalies</a></li>
             <li><a href="http://127.0.0.1:5000/tipsandtricks">Tips & Tricks</a></li>
             <li><a href="http://127.0.0.1:5000/feedback">Feedback</a></li>
+            <li><a href="http://127.0.0.1:5000/userstats">My Stats</a></li>
             <li><a href="http://127.0.0.1:5000/login">Login</a></li>
             <li><a href="http://127.0.0.1:5000/signup">Sign Up</a></li>
+            <li><a href="http://127.0.0.1:5000/admin">Admin</a></li>
         </ul>
 
+        <!-- <script>
+            document.getElementById('admin-link').addEventListener('click', function(event) {
+                // Check if user is not an admin
+                if (!{{ is_admin }}) {
+                    event.preventDefault();  // Prevent default link action (navigating to /admin)
+                    alert('You are not authorized to access this page.');  // Show alert
+                }
+            });
+        </script> -->
+        
         <title>Light/Dark Mode Toggle</title>
         <link rel="stylesheet" href="/static/style.css">
 
@@ -32,13 +44,9 @@
             <script src="/static/script.js"></script>
         </body>
 
-        <div class="user-info" id="user-info">
-            {% if username %}
-                Logged in as: {{ username[2] }}
-            {% else %}
-                <a href="/login">Login</a>
-            {%endif%}
-        </div>
+        <form action="/logout" method="post">
+            <button type="submit">Sign Out</button>
+        </form>
 
         <main>
         {%block content%}{%endblock%}

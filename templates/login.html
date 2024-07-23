@@ -1,31 +1,36 @@
 <!doctype html>
-{%extends "layout.html"%}
-{%block content%} 
+{%extends "layout.html"%} 
+{%block content%}
 
 <html>
         
-        <div class="login-container">
-            <h3>Login</h3>
+<div class="login-container">
+    <center>
+            <h2>Login</h2>
             <form action="/login" method="post">
                 <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" id="username" name="username" required style="height:20px; width:200px">
             
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
 
-                <button type="submit">Login</button>
+                <center><button type="submit">Login</button></center>
             </form>
-            <p>Don't have an account? <a href="http://127.0.0.1:5000/signup">Sign up</a></p>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
-        </div>
+        
+
+        <p>Don't have an account? <a href="http://127.0.0.1:5000/signup">Sign Up</a></p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+</center>
+</div>
 
         {%endblock%}
     </body>

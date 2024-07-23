@@ -1,0 +1,28 @@
+<!doctype html>
+{%extends "layout.html"%} 
+{%block content%}
+
+<html>
+    <center>
+        <h2>My Stats</h2>
+        
+            <div class="container">
+                <form action="/submitedfeedback" method="post">
+                  <label for="GP">GP</label>
+                  <input type="text" id="GP" name="GP" placeholder="Games Played">
+                  
+                  <label for="SO">SO</label>
+                  <input type="text" id="SO" name="SO" placeholder="Shutouts">
+
+                  <label for="GAA">GAA</label>
+                  <input type="text" id="GAA" name="GAA" placeholder="Goals Against Average">
+
+                  <label for="S%">S%</label>
+                  <input type="text" id="S%" name="S%" placeholder="Save Percentage">
+                </div>
+        
+            </center>
+        </html>
+
+        {%endblock%}
+    </body>

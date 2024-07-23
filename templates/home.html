@@ -1,7 +1,10 @@
-{%extends "layout.html"%}
-{%block content%}
+{% extends "layout.html" %}
+{% block content %}
 
-
+<!-- Display welcome message if logged in -->
+{% if loggedIn %}
+<h4>Logged in as, {{ username }}</h4>
+{% endif %}
 
 <p class="homepage"></p>
 
@@ -26,4 +29,5 @@
 <br>
 <br>
 <br>
-{%endblock%}
+
+{% endblock %}

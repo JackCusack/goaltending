@@ -1,28 +1,37 @@
+<!doctype html>
 {%extends "layout.html"%} 
 {%block content%}
-<!doctype html>
 
 <h2>Admin page</h2>
 
-<p>{{feedback}}</p>
+<style>
+    /* CSS to add space between table columns */
+    table {
+        width: 100%; /* Ensure table spans full width */
+        border-collapse: collapse; /* Remove default table spacing */
+    }
 
+    td {
+        padding: 10px; /* Adjust padding as needed */
+    }
+</style>
 
 <div>
     <center>
-    <table>
-        <tr bgcolor="grey">
-            <th>Name</th>
-            <th>Message</th>
-            <th>Topic</th>
-        </tr>
-        
-        <tr bgcolor="darkred">
-            <td>{{feedback[1]}}</td>
-            <td>{{feedback[1]}}</td>
-            <td>{{feedback[1]}}</td>
-        </tr>   
-
-    </table>
+        <table>
+            <tr bgcolor="darkred">
+                <th>Name</th>    
+                <th>Message</th>
+                <th>Topic</th>
+            </tr>
+            {% for item in feedback %}
+            <tr bgcolor="grey">
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </center>
     </div>
 

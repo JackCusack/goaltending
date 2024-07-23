@@ -66,7 +66,11 @@ ul {
     padding: 14px 40px;
     text-decoration: none;
   }
-  
+
+  .active {
+    background-color: rgb(189, 0, 0)
+  }
+
   /*styling for NHL Team goalies page with the logos and gallery layout*/
   div.gallery {
     margin: 5px;
@@ -98,8 +102,6 @@ ul {
       text-decoration-line: underline;
       text-decoration-color: rgb(255, 255, 255);
     }
-
-
 
   /* Change the navbar link color on hover */
   li a:hover {
@@ -156,16 +158,11 @@ ul {
   background-color: rgb(83, 0, 0);
 }
 
-
-
-
-
 /*styling for login page*/
 label {
   display: block;
   margin-bottom: 8px;
 }
-
 
 input[type="text"],
 input[type="password"] {
@@ -173,9 +170,9 @@ input[type="password"] {
   margin-bottom: 20px;
 }
 
-.user-info {
-  font-size:14px;
-  color:rgb(83, 0, 0);
-  float: right;
+/*  Images on the tips and tricks page to prevent distortion*/
+.responsive-image {
+  max-width: 20%;
+  height: auto;
+  display: block; 
 }
-

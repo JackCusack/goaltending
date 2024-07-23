@@ -1,16 +1,21 @@
 <!doctype html>
-{%extends "layout.html"%}
-{%block content%} 
+{%extends "layout.html"%} 
+{%block content%}
 
 <html>
-        <h1>Sign Up</h1>
+    <div class="container">
+        <center>
+        <h2>Sign Up</h2>
         <form action="/signup" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required><br><br>
+            <input type="text" id="username" name="username" required style="height:20px; width:200px"><br><br>
+
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required><br><br>
             <input type="submit" value="Sign Up">
         </form>
+    
+    
         <p>Already have an account? <a href="http://127.0.0.1:5000/login">Login</a></p>
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -21,6 +26,7 @@
                 </ul>
             {% endif %}
         {% endwith %}
-
+    </center>
+    </div>
         {%endblock%}
     </body>
