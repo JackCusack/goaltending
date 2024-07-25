@@ -8,7 +8,8 @@ username = ''
 admin = False
 
 app = Flask(__name__)
-app.secret_key ='your_secret_key'
+app.secret_key = 'your_secret_key'
+
 
 @app.route('/')
 def homepage():
@@ -18,17 +19,21 @@ def homepage():
     else:
         return render_template("home.html", loggedIn=loggedIn)
 
+
 @app.route('/history')
 def history():
     return render_template("history.html")
+
 
 @app.route('/all_teams')
 def all_teams():
     return render_template("all_teams.html")
 
+
 @app.route('/tipsandtricks')
 def tipsandtricks():
     return render_template("tipsandtricks.html")
+
 
 #Returns statistics data from the goalie database in SQL to the goaltender page
 @app.route('/goalie/<int:id>')
@@ -46,10 +51,12 @@ def goaltender(id):
 def feedback():
     return render_template('feedback.html')
 
+
 #Finished feedback page
 @app.route('/submitedfeedback')
 def submitedfeedback():
     return render_template('submitedfeedback.html')
+
 
 #Submits feedback into goalie database and directs user to a 'return to home page'
 @app.route('/submitedfeedback', methods=['POST'])
@@ -57,12 +64,13 @@ def submit_feedback():
     name = request.form['name']
     message = request.form['message']
     topic = request.form['topic']
-    conn  = sqlite3.connect('goalies.db')
+    conn = sqlite3.connect('goalies.db')
     cur = conn.cursor()
     cur.execute('INSERT INTO Feedback (name, message, topic) VALUES (?,?,?)', (name, message, topic))
     conn.commit()
     conn.close()
     return redirect('/submitedfeedback')
+
 
 #Hidden admin page for feedback display
 @app.route('/admin')
@@ -78,13 +86,16 @@ def admin():
     else:
         return render_template("home.html")
 
+
 @app.route('/login')
 def login():
     return render_template('login.html')
 
+
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
+
 
 #login page
 @app.route('/login', methods=['POST'])
@@ -107,16 +118,18 @@ def user_login():
         return redirect('/')
     else:
         flash('Invalid username or password', 'Try again')
-        return render_template("login.html")
-    
-#logging out    
+        return render_template("login.html")   
+
+
+#logging out  
 @app.route('/logout', methods=['POST'])    
 def logout():
     global loggedIn
     session.pop('username', None)
     session.pop('is_admin', None)
     loggedIn = False
-    return render_template ('home.html')
+    return render_template('home.html')
+
 
 #Sign up
 @app.route('/signup', methods=['POST'])
@@ -141,10 +154,38 @@ def user_signup():
 
     return render_template('signup.html')
 
+
 #User stats
+@app.route('/createstats')
+def createstats():
+    return render_template('createstats.html')
+
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    games_played = request.form['gamesPlayed']
+    shutouts = request.form['shutouts']
+    goalsagainstaverage = request.form['goalsagainstaverage']
+    savepercentage = request.form['savepercentage']
+
+    conn = sqlite3.connect('goalies.db')
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO Userstats (games_played, shutouts, goalsagainstaverage, savepercentage) VALUES (?, ?, ?, ?, ?)", (games_played, shutouts, goalsagainstaverage, savepercentage))
+    conn.commit()
+    conn.close
+
+    return render_template('userstats.html')
+
+
+#Display for user stats
 @app.route('/userstats')
 def userstats():
-    return render_template ('userstats.html')
+    conn = sqlite3.connect('goalies.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Userstats')
+    Userstats = cursor.fetchall()
+    conn.close()
+    return render_template('userstats.html', Userstats=Userstats)
 
 
 if __name__ == "__main__":

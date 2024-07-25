@@ -3,26 +3,26 @@
 {%block content%}
 
 <html>
-    <center>
-        <h2>My Stats</h2>
-        
-            <div class="container">
-                <form action="/submitedfeedback" method="post">
-                  <label for="GP">GP</label>
-                  <input type="text" id="GP" name="GP" placeholder="Games Played">
-                  
-                  <label for="SO">SO</label>
-                  <input type="text" id="SO" name="SO" placeholder="Shutouts">
+    <div>
+        <center>
+        <table>
+            <tr bgcolor="grey">
+                <th>Games Played (GP)</th>
+                <th>Shutouts (SO)</th>
+                <th>Goals Against Average (GAA)</th>
+                <th>Save Percentage (S%)</th>
+            </tr>
+            
+            <tr bgcolor="darkred">
+                <td>{{Userstats[2]}}</td>
+                <td>{{Userstats[3]}}</td>
+                <td>{{Userstats[4]}}</td>
+                <td>{{Userstats[5]}}</td>
+            </tr>    
+        </table>
+        </center>
+        </div>
 
-                  <label for="GAA">GAA</label>
-                  <input type="text" id="GAA" name="GAA" placeholder="Goals Against Average">
-
-                  <label for="S%">S%</label>
-                  <input type="text" id="S%" name="S%" placeholder="Save Percentage">
-                </div>
-        
-            </center>
         </html>
 
         {%endblock%}
-    </body>

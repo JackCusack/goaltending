@@ -19,3 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.getElementById('statForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const gamesPlayed = document.getElementById('gamesPlayed').value;
+    const wins = document.getElementById('wins').value;
+    const losses = document.getElementById('losses').value;
+    const goalsAgainst = document.getElementById('goalsAgainst').value;
+    const saves = document.getElementById('saves').value;
+
+    // Simple validation
+    if (gamesPlayed && wins && losses && goalsAgainst && saves) {
+        // Perform some action, like sending data to the server
+        alert('Stats submitted!');
+    } else {
+        alert('Please fill in all fields.');
+    }
+});

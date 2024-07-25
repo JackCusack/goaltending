@@ -1,0 +1,31 @@
+<!doctype html>
+{%extends 'layout.html'%} 
+{%block content%}
+
+<html>
+  <center>
+      <h2>My Stats</h2>
+      
+        <form id="statForm">
+          <label for="GP">GP</label>
+          <input type="number" id="gamesPlayed" name="gamesPlayed" placeholder="Games Played" required><br>
+                  
+          <label for="SO">SO</label>
+          <input type="number" id="shutouts" name="shutouts" placeholder="Shutouts" required><br>
+
+          <label for="GAA">GAA</label>
+          <input type="number" id="goalsagainstaverage" name="goalsagainstaverage" placeholder="Goals Against Average"required><br>
+
+          <label for="S%">S%</label>
+          <input type="number" id="savepercentage" name="savepercentage" placeholder="Save Percentage"required><br>
+
+          <button type="submit">Submit</button>
+        </form>
+
+        <a href="/userstats">View All Stats</a>
+        <script src="{{ url_for('static', filename-'script.js') }}"></script>    
+  </center>     
+</html>
+  {%endblock%}
+
+
