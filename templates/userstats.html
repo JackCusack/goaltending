@@ -1,28 +1,36 @@
 <!doctype html>
-{%extends "layout.html"%} 
-{%block content%}
+{% extends "layout.html" %}
 
-<html>
-    <div>
-        <center>
-        <table>
+{% block content %}
+<div>
+    <center>
+        <table border="1" cellpadding="10" cellspacing="0">
             <tr bgcolor="grey">
+                <th>Name</th>
                 <th>Games Played (GP)</th>
                 <th>Shutouts (SO)</th>
                 <th>Goals Against Average (GAA)</th>
                 <th>Save Percentage (S%)</th>
             </tr>
             
+            {% for stat in Userstats %}
             <tr bgcolor="darkred">
-                <td>{{Userstats[2]}}</td>
-                <td>{{Userstats[3]}}</td>
-                <td>{{Userstats[4]}}</td>
-                <td>{{Userstats[5]}}</td>
-            </tr>    
+                <td>{{ stat[1] }}</td>
+                <td>{{ stat[2] }}</td>
+                <td>{{ stat[3] }}</td>
+                <td>{{ stat[4] }}</td>
+                <td>{{ stat[5] }}</td>
+            </tr>
+            {% endfor %}
         </table>
-        </center>
-        </div>
+    </center>
+</div>
 
-        </html>
 
-        {%endblock%}
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+
+

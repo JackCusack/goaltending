@@ -155,27 +155,34 @@ def user_signup():
     return render_template('signup.html')
 
 
-#User stats
-@app.route('/createstats')
+#User stats table
+
+@app.route('/createstats', methods=['GET', 'POST'])
 def createstats():
+    if request.method == 'POST':
+        # Extract form data
+        username = request.form['username']
+        games_played = request.form['gamesPlayed']
+        shutouts = request.form['shutouts']
+        goalsagainstaverage = request.form['goalsagainstaverage']
+        savepercentage = request.form['savepercentage']
+
+        # SQL query
+        sql = '''INSERT INTO Userstats (username, games_played, shutouts, goalsagainstaverage, savepercentage)
+                 VALUES (?, ?, ?, ?, ?)'''
+
+        # Database interaction
+        conn = sqlite3.connect('goalies.db')
+        cursor = conn.cursor()
+        cursor.execute(sql, (username, games_played, shutouts, goalsagainstaverage, savepercentage))
+        conn.commit()
+        conn.close()
+
+
+        return render_template('createstats.html')
+    
+    # Handle GET request
     return render_template('createstats.html')
-
-
-@app.route('/submit', methods=['POST'])
-def submit():
-    games_played = request.form['gamesPlayed']
-    shutouts = request.form['shutouts']
-    goalsagainstaverage = request.form['goalsagainstaverage']
-    savepercentage = request.form['savepercentage']
-
-    conn = sqlite3.connect('goalies.db')
-    cursor = conn.cursor()
-    cursor.execute("INSERT INTO Userstats (games_played, shutouts, goalsagainstaverage, savepercentage) VALUES (?, ?, ?, ?, ?)", (games_played, shutouts, goalsagainstaverage, savepercentage))
-    conn.commit()
-    conn.close
-
-    return render_template('userstats.html')
-
 
 #Display for user stats
 @app.route('/userstats')
@@ -183,9 +190,9 @@ def userstats():
     conn = sqlite3.connect('goalies.db')
     cursor = conn.cursor()
     cursor.execute('SELECT * FROM Userstats')
-    Userstats = cursor.fetchall()
+    Ustats = cursor.fetchall()
     conn.close()
-    return render_template('userstats.html', Userstats=Userstats)
+    return render_template('userstats.html', Userstats=Ustats)
 
 
 if __name__ == "__main__":

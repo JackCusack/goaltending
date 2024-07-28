@@ -158,17 +158,20 @@ ul {
   background-color: rgb(83, 0, 0);
 }
 
-/*styling for login page*/
+/*styling for login page and*/
 label {
   display: block;
   margin-bottom: 8px;
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"]
+{
   padding:10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
 }
+
 
 /*  Images on the tips and tricks page to prevent distortion*/
 .responsive-image {
