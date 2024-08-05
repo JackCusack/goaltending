@@ -1,28 +1,30 @@
+  /*Basic styling for layout and main colors of the website for light and dark modes*/
+
 body {
   transition: background-color 0.3s, color 0.3s;
-  }
+}
 
 body.dark-mode {
   font-family: "Comic Sans MS"; color:rgb(247, 247, 247); 
   background-color:rgb(41, 41, 41);
-  }
+}
 
 body.light-mode {
   font-family: "Comic Sans MS"; color:rgb(41, 41, 41); 
   background-color:rgb(247, 247, 247);
-  }
+}
 
 p.dark-mode {
   font-size:large ;
   color:lightgrey;
   padding: 5px;
-  }
+}
 
 p.light-mode {
   font-size:large ;
   color:rgb(0, 0, 0);
   padding: 5px;
-  }
+}
 
 footer {
   position: fixed;
@@ -33,7 +35,7 @@ footer {
   padding: 1px;
   background-color: rgb(100, 100, 100);
   color: white;
-  }
+}
   
 ft{
   font-size: small;
@@ -41,96 +43,96 @@ ft{
 
 h1 {
   text-shadow: 2px 2px #979797;
-  }
+}
  
 h2, h3, h5, h6 {
   padding: 20px;
-  }
+}
 
+/*Navbar styling*/
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
   background-color: rgb(100, 100, 100);
-  }
+}
   
-  li {
-    float: left;
-  }
+li {
+  float: left;
+}
   
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 40px;
-    text-decoration: none;
-  }
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 40px;
+  text-decoration: none;
+}
 
-  .active {
-    background-color: rgb(189, 0, 0)
-  }
+.active {
+  background-color: darkred;
+}
 
-  /*styling for NHL Team goalies page with the logos and gallery layout*/
-  div.gallery {
-    margin: 5px;
-    border: 2px solid darkred;
-    float: left;
-    width: 180px;
-  }
+/*styling for NHL Team goalies page with the logos and gallery layout*/
+div.gallery {
+  margin: 5px;
+  border: 2px solid darkred;
+  float: left;
+  width: 180px;
+}
   
-  div.gallery:hover {
-    border: 2px solid rgb(255, 255, 255);
-  }
+div.gallery:hover {
+  border: 2px solid rgb(255, 255, 255);
+}
   
-  div.gallery img {
-    width: 100%;
-    height: auto;
-  }
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
   
-    /*h4 is the text underneath the logos in the gallery page ie NHL team goalies*/
-    h4.light-mode {
-      color: rgb(0, 0, 0);
-      text-align: center;
-      text-decoration-line: underline;
-      text-decoration-color: rgb(0, 0, 0);
-    }
+/*h4 is the text underneath the logos in the gallery page ie NHL team goalies*/
+h4.light-mode {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-color: rgb(0, 0, 0);
+}
 
-    h4.dark-mode {
-      color: rgb(255, 255, 255);
-      text-align: center;
-      text-decoration-line: underline;
-      text-decoration-color: rgb(255, 255, 255);
-    }
+h4.dark-mode {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-decoration-line: underline;
+  text-decoration-color: rgb(255, 255, 255);
+}
 
-  /* Change the navbar link color on hover */
-  li a:hover {
-    background-color: darkred;
-  }
+/* Change the navbar link color on hover */
+li a:hover {
+  background-color: darkred;
+}
 
 /*Formatting for goaltender pages*/
-  .grid-container {
-    display: flex;
-    grid-template-columns: 500px auto;
-    gap: 10px;
-    padding: 10px;
-    
-  }
+.grid-container {
+  display: flex;
+  grid-template-columns: 500px auto;
+  gap: 10px;
+  padding: 10px; 
+}
 
-  /*Formating for tips and tricks page*/
-  .content {
-    display:flex;
-    grid-template-columns: center 50px center 50px;
-    gap: 10px;
-    padding: 10px;
-    border: 2px solid rgb(179, 179, 179);
-    box-shadow:0 0 10px rgb(48, 39, 39);
-  }
+/*Formating for tips and tricks page*/
+.content {
+  display:flex;
+  grid-template-columns: center 50px center 50px;
+  gap: 10px;
+  padding: 10px;
+  border: 2px solid rgb(179, 179, 179);
+  box-shadow:0 0 10px rgb(48, 39, 39);
+}
 
-  aside {
-    width: 260px;
-    float: center;
-    border-width: 100px;
+aside {
+  width: 260px;
+  float: center;
+  border-width: 100px;
 }
 
 .center-box{
@@ -141,6 +143,13 @@ ul {
   border: 2px solid rgb(0, 0, 0);
   background-color: rgb(100,100,100);
   text-align: center;
+}
+
+/*  Images on the tips and tricks page to prevent distortion*/
+.responsive-image {
+  max-width: 20%;
+  height: auto;
+  display: block; 
 }
 
 .home-button {
@@ -158,7 +167,7 @@ ul {
   background-color: rgb(83, 0, 0);
 }
 
-/*styling for login page and*/
+/*styling for login and signup page*/
 label {
   display: block;
   margin-bottom: 8px;
@@ -173,9 +182,4 @@ input[type="number"]
 }
 
 
-/*  Images on the tips and tricks page to prevent distortion*/
-.responsive-image {
-  max-width: 20%;
-  height: auto;
-  display: block; 
-}
+
