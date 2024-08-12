@@ -14,7 +14,7 @@
         </header>
         
         <ul>
-            <li><a href="http://127.0.0.1:5000/"><img src="/static/images/logo2.png" height="30px"></a></li>
+            <li><a href="http://127.0.0.1:5000/"><img src="/static/images/logo4.png" style="width: 27px;"></a></li>
             <li><a href="http://127.0.0.1:5000/">Home</a></li>
             <li><a href="http://127.0.0.1:5000/history">History of Goaltending</a></li>
             <li><a href="http://127.0.0.1:5000/all_teams">NHL Team Goalies</a></li>
@@ -22,9 +22,23 @@
             <li><a href="http://127.0.0.1:5000/feedback">Feedback</a></li>
             <li><a href="http://127.0.0.1:5000/userstats">My Stats</a></li>
             <li><a href="http://127.0.0.1:5000/createstats">Create Stats</a></li>
+            {% if not loggedIn%}
             <li><a href="http://127.0.0.1:5000/login">Login</a></li>
+            {% endif %}
+            {% if not loggedIn%}
             <li><a href="http://127.0.0.1:5000/signup">Sign Up</a></li>
+            {% endif %}
+            {% if loggedIn and username == 'admin' %}
             <li><a href="http://127.0.0.1:5000/admin">Admin</a></li>
+            {% endif %}
+            {% if loggedIn %}
+            <li>
+            <form action="/logout" method="post">
+                <button class="a" type="submit">Sign Out</button>
+            </form>
+            </li>
+            </ul>
+            {% endif %}
         </ul>
 
         <title>Light/Dark Mode Toggle</title>
@@ -34,10 +48,6 @@
             <button id="theme-toggle">Toggle Light/Dark Mode</button>
             <script src="/static/script.js"></script>
         </body>
-
-        <form action="/logout" method="post">
-            <button type="submit">Sign Out</button>
-        </form>
 
         <main>
         {%block content%}{%endblock%}

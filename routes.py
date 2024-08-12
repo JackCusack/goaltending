@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session, render_template, flash
+from flask import Flask, request, redirect, session, render_template, flash, abort
 
 import sqlite3
 
@@ -35,7 +35,7 @@ def tipsandtricks():
     return render_template("tipsandtricks.html")
 
 
-#Returns statistics data from the goalie database in SQL to the goaltender page
+# Returns statistics data from the goalie database in SQL to the goaltender page
 @app.route('/goalie/<int:id>')
 def goaltender(id):
     conn = sqlite3.connect("goalies.db")
@@ -44,21 +44,21 @@ def goaltender(id):
     goaltender = cur.fetchone()
     return render_template('goaltender.html', goaltender=goaltender)
 
-#Feedback function...
+# Feedback function...
 
-#Feedback page
+# Feedback page
 @app.route('/feedback')
 def feedback():
     return render_template('feedback.html')
 
 
-#Finished feedback page
+# Finished feedback page
 @app.route('/submitedfeedback')
 def submitedfeedback():
     return render_template('submitedfeedback.html')
 
 
-#Submits feedback into goalie database and directs user to a 'return to home page'
+# Submits feedback into goalie database and directs user to a 'return to home page'
 @app.route('/submitedfeedback', methods=['POST'])
 def submit_feedback():
     name = request.form['name']
@@ -72,21 +72,6 @@ def submit_feedback():
     return redirect('/submitedfeedback')
 
 
-#Hidden admin page for feedback display
-@app.route('/admin')
-def admin():
-    global admin  # Define global variables
-    if 'username' in session and admin == True: 
-        conn = sqlite3.connect("goalies.db")
-        cur = conn.cursor()
-        cur.execute("SELECT name, message, topic FROM Feedback")
-        feedback = cur.fetchall()
-        conn.close()
-        return render_template("admin.html", feedback=feedback)
-    else:
-        return render_template("home.html")
-
-
 @app.route('/login')
 def login():
     return render_template('login.html')
@@ -97,7 +82,7 @@ def signup():
     return render_template('signup.html')
 
 
-#login page
+# login page
 @app.route('/login', methods=['POST'])
 def user_login():
     global loggedIn, username, admin  # Define global variables
@@ -109,29 +94,55 @@ def user_login():
     conn.close()
 
     if user:
-        flash('Login successful!', 'success')
-        session['username'] = username
-        flash(f'Welcome back {username}')
         loggedIn = True
-        if username == "admin":
-            admin = True
+        session['username'] = username
+        flash('Login successful!', 'success')
+        flash(f'Welcome back {username}')
         return redirect('/')
     else:
         flash('Invalid username or password', 'Try again')
-        return render_template("login.html")   
+
+    return render_template('login.html')
 
 
-#logging out  
+    # if username == 'admin' and password == 'qwerty':
+    #     flash('Login successful!', 'success')
+    #     loggedIn = True
+    #     session['role'] = 'admin'
+    #     flash(f'Welcome back {username}')
+    #     return redirect('/')
+    # elif user:
+    #     flash('Login successful!', 'success')
+    #     session['username'] = username
+    #     flash(f'Welcome back {username}')
+    #     loggedIn = True
+
+    # if user:
+    #     flash('Login successful!', 'success')
+    #     session['username'] = username
+    #     flash(f'Welcome back {username}')
+    #     loggedIn = True
+    # if username == "admin" and password == 'qwerty':
+    #         session['loggedIn'] = True
+    #         session['role'] = 'admin'
+    #     return redirect('/')
+    # else:
+    #     flash('Invalid username or password', 'Try again')
+
+    #     return render_template("login.html")  
+
+
+# logging out  
 @app.route('/logout', methods=['POST'])    
 def logout():
     global loggedIn
     session.pop('username', None)
-    session.pop('is_admin', None)
+    session.pop('admin', None)
     loggedIn = False
     return render_template('home.html')
 
 
-#Sign up
+# Sign up
 @app.route('/signup', methods=['POST'])
 def user_signup():
     global loggedIn, username  # Define global variables
@@ -155,7 +166,7 @@ def user_signup():
     return render_template('signup.html')
 
 
-#User stats table
+# User stats table
 
 @app.route('/createstats', methods=['GET', 'POST'])
 def createstats():
@@ -184,7 +195,7 @@ def createstats():
     # Handle GET request
     return render_template('createstats.html')
 
-#Display for user stats
+# Display for user stats
 @app.route('/userstats')
 def userstats():
     conn = sqlite3.connect('goalies.db')
@@ -194,6 +205,32 @@ def userstats():
     conn.close()
     return render_template('userstats.html', Userstats=Ustats)
 
+
+# Hidden admin page for feedback display
+@app.route('/admin')
+def admin():
+    global admin
+    conn = sqlite3.connect("goalies.db")
+    cur = conn.cursor()
+    cur.execute("SELECT name, message, topic FROM Feedback")
+    feedback = cur.fetchall()
+    conn.close()
+    return render_template("admin.html", feedback=feedback)
+
+      # Define global variables
+    # if not session.get('loggedIn') or session.get('username') != 'admin':
+    #     return render_template('home.html')
+    # return render_template('admin.html')
+
+    # if 'username' in session and admin is True: 
+        # conn = sqlite3.connect("goalies.db")
+        # cur = conn.cursor()
+        # cur.execute("SELECT name, message, topic FROM Feedback")
+        # feedback = cur.fetchall()
+        # conn.close()
+        # return render_template("admin.html", feedback=feedback)
+    # else:
+    #     return render_template("home.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

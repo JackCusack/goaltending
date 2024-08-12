@@ -74,6 +74,25 @@ li a {
   background-color: darkred;
 }
 
+/*Signout button on navbar*/
+li .a {
+  display: block;
+  text-align: center;
+  padding: 16px 40px; 
+  text-decoration: none;
+  font-size: 14px;
+  background-color: rgb(100, 100, 100);
+  border: none;
+  color: white;
+  font-family: "Comic Sans MS"; font-weight: bold;
+}
+
+li .a:hover {
+  background-color: darkred;
+  color: white;
+}
+
+
 /*styling for NHL Team goalies page with the logos and gallery layout*/
 div.gallery {
   margin: 5px;
@@ -180,6 +199,7 @@ input[type="number"]
   padding:10px;
   margin-bottom: 20px; 
 }
+
 
 
 
