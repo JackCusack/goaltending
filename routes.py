@@ -22,18 +22,27 @@ def homepage():
 
 @app.route('/history')
 def history():
-    return render_template("history.html")
-
+    global loggedIn, username  # Define global variables
+    if loggedIn:
+        return render_template("history.html", loggedIn=loggedIn, username=username)
+    else:
+        return render_template("history.html", loggedIn=loggedIn)
 
 @app.route('/all_teams')
 def all_teams():
-    return render_template("all_teams.html")
-
+    global loggedIn, username  # Define global variables
+    if loggedIn:
+        return render_template("all_teams.html", loggedIn=loggedIn, username=username)
+    else:
+        return render_template("all_teams.html", loggedIn=loggedIn)
 
 @app.route('/tipsandtricks')
 def tipsandtricks():
-    return render_template("tipsandtricks.html")
-
+    global loggedIn, username  # Define global variables
+    if loggedIn:
+        return render_template("tipsandtricks.html", loggedIn=loggedIn, username=username)
+    else:
+        return render_template("tipsandtricks.html", loggedIn=loggedIn)
 
 # Returns statistics data from the goalie database in SQL to the goaltender page
 @app.route('/goalie/<int:id>')
@@ -49,14 +58,21 @@ def goaltender(id):
 # Feedback page
 @app.route('/feedback')
 def feedback():
-    return render_template('feedback.html')
+    global loggedIn, username  # Define global variables
+    if loggedIn:
+        return render_template("feedback.html", loggedIn=loggedIn, username=username)
+    else:
+        return render_template("feedback.html", loggedIn=loggedIn)
 
 
 # Finished feedback page
 @app.route('/submitedfeedback')
 def submitedfeedback():
-    return render_template('submitedfeedback.html')
-
+    global loggedIn, username  # Define global variables
+    if loggedIn:
+        return render_template("submitedfeedback.html", loggedIn=loggedIn, username=username)
+    else:
+        return render_template("submitedfeedback.html", loggedIn=loggedIn)
 
 # Submits feedback into goalie database and directs user to a 'return to home page'
 @app.route('/submitedfeedback', methods=['POST'])
