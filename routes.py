@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session, render_template, flash, abort
+from flask import Flask, request, redirect, session, render_template, flash
 
 import sqlite3
 
@@ -183,7 +183,6 @@ def user_signup():
 
 
 # User stats table
-
 @app.route('/createstats', methods=['GET', 'POST'])
 def createstats():
     if request.method == 'POST':
@@ -207,7 +206,7 @@ def createstats():
 
 
         return render_template('createstats.html')
-    
+
     # Handle GET request
     return render_template('createstats.html')
 
@@ -232,21 +231,6 @@ def admin():
     feedback = cur.fetchall()
     conn.close()
     return render_template("admin.html", feedback=feedback)
-
-      # Define global variables
-    # if not session.get('loggedIn') or session.get('username') != 'admin':
-    #     return render_template('home.html')
-    # return render_template('admin.html')
-
-    # if 'username' in session and admin is True: 
-        # conn = sqlite3.connect("goalies.db")
-        # cur = conn.cursor()
-        # cur.execute("SELECT name, message, topic FROM Feedback")
-        # feedback = cur.fetchall()
-        # conn.close()
-        # return render_template("admin.html", feedback=feedback)
-    # else:
-    #     return render_template("home.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

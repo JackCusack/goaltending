@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- File acts as a template for all pages, displays: favicon, header, navbar, buttons and footer -->
 <html>
 
     <head>
@@ -12,7 +13,8 @@
         <header>
             <center><h1>Netminder</h1></center>
         </header>
-        
+
+        <!-- Content for navbar, controls what the user can or cannot see based on session status ie logged in or logged out -->
         <ul>
             <li><a href="http://127.0.0.1:5000/"><img src="/static/images/logo4.png" style="width: 27px;"></a></li>
             <li><a href="http://127.0.0.1:5000/">Home</a></li>
@@ -41,6 +43,7 @@
             {% endif %}
         </ul>
 
+        <!-- light mode and dark mode button -->
         <title>Light/Dark Mode Toggle</title>
         <link rel="stylesheet" href="/static/style.css">
 
@@ -49,14 +52,22 @@
             <script src="/static/script.js"></script>
         </body>
 
+        <!-- Displays page content from linked html files -->
         <main>
         {%block content%}{%endblock%}
         </main>
         
+        <!-- footer displayed at the bottom of the screen -->
         <footer>
         <ft>Copyright &copy;2024: Designed by Jack Cusack</ft>
         </footer>
 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
     </body>
     
 </html>

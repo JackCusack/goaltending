@@ -154,7 +154,7 @@ aside {
   border-width: 100px;
 }
 
-.center-box{
+.center-box {
   display: flex;
   justify-content: center;
   width: 50%;
@@ -199,7 +199,3 @@ input[type="number"]
   padding:10px;
   margin-bottom: 20px; 
 }
-
-
-
-
