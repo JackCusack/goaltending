@@ -1,5 +1,4 @@
-  /*Basic styling for layout and main colors of the website for light and dark modes*/
-
+/*Basic styling for layout and main colors of the website for light and dark modes*/
 body {
   transition: background-color 0.3s, color 0.3s;
 }
@@ -47,6 +46,20 @@ h1 {
  
 h2, h3, h5, h6 {
   padding: 20px;
+}
+
+/*Team page logo description*/
+h4 {
+  color: rgb(255, 37, 37);
+}
+
+/*Table words for goaltender stats and userstats*/
+th {
+  color: white;
+}
+
+td {
+  color: white;
 }
 
 /*Navbar styling*/
@@ -171,6 +184,7 @@ aside {
   display: block; 
 }
 
+/* Home button that displays after submitting feedback */
 .home-button {
   display: inline-block;
   padding: 10px 20px;

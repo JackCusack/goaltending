@@ -120,34 +120,6 @@ def user_login():
 
     return render_template('login.html')
 
-
-    # if username == 'admin' and password == 'qwerty':
-    #     flash('Login successful!', 'success')
-    #     loggedIn = True
-    #     session['role'] = 'admin'
-    #     flash(f'Welcome back {username}')
-    #     return redirect('/')
-    # elif user:
-    #     flash('Login successful!', 'success')
-    #     session['username'] = username
-    #     flash(f'Welcome back {username}')
-    #     loggedIn = True
-
-    # if user:
-    #     flash('Login successful!', 'success')
-    #     session['username'] = username
-    #     flash(f'Welcome back {username}')
-    #     loggedIn = True
-    # if username == "admin" and password == 'qwerty':
-    #         session['loggedIn'] = True
-    #         session['role'] = 'admin'
-    #     return redirect('/')
-    # else:
-    #     flash('Invalid username or password', 'Try again')
-
-    #     return render_template("login.html")  
-
-
 # logging out  
 @app.route('/logout', methods=['POST'])    
 def logout():
@@ -204,21 +176,37 @@ def createstats():
         conn.commit()
         conn.close()
 
-
         return render_template('createstats.html')
 
     # Handle GET request
+    global loggedIn  # Define global variables
+    if loggedIn:
+        return render_template("createstats.html", loggedIn=loggedIn)
+    else:
+        return render_template("createstats.html", loggedIn=loggedIn)
     return render_template('createstats.html')
 
 # Display for user stats
 @app.route('/userstats')
 def userstats():
-    conn = sqlite3.connect('goalies.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM Userstats')
-    Ustats = cursor.fetchall()
-    conn.close()
+    global loggedIn  # Define global variables
+    if loggedIn:
+        conn = sqlite3.connect('goalies.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM Userstats')
+        Ustats = cursor.fetchall()
+        conn.close()
+        return render_template("userstats.html", loggedIn=loggedIn, Userstats=Ustats)
+    else:
+        conn = sqlite3.connect('goalies.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM Userstats')
+        Ustats = cursor.fetchall()
+        conn.close()
+        return render_template("userstats.html", loggedIn=loggedIn, Userstats=Ustats)
+    
     return render_template('userstats.html', Userstats=Ustats)
+   
 
 
 # Hidden admin page for feedback display
@@ -231,6 +219,7 @@ def admin():
     feedback = cur.fetchall()
     conn.close()
     return render_template("admin.html", feedback=feedback)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
