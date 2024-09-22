@@ -24,24 +24,40 @@
             <li><a href="http://127.0.0.1:5000/feedback">Feedback</a></li>
             <li><a href="http://127.0.0.1:5000/userstats">User Stats</a></li>
             <li><a href="http://127.0.0.1:5000/createstats">Create Stats</a></li>
-            {% if not loggedIn%}
-            <li><a href="http://127.0.0.1:5000/login">Login</a></li>
-            {% endif %}
-            {% if not loggedIn%}
-            <li><a href="http://127.0.0.1:5000/signup">Sign Up</a></li>
-            {% endif %}
-            {% if loggedIn and username == 'admin' %}
-            <li><a href="http://127.0.0.1:5000/admin">Admin</a></li>
-            {% endif %}
+            
             {% if loggedIn %}
-            <li>
-            <form action="/logout" method="post">
-                <button class="a" type="submit">Sign Out</button>
-            </form>
-            </li>
-            </ul>
+                {% if isAdmin %}
+                    <li><a href="http://127.0.0.1:5000/admin">Admin</a></li>
+                {% endif %}
+                <li>
+                    <form action="/logout" method="post">
+                        <button class="a" type="submit">Sign Out</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="http://127.0.0.1:5000/login">Login</a></li>
+                <li><a href="http://127.0.0.1:5000/signup">Sign Up</a></li>
             {% endif %}
+    
         </ul>
+
+        <!--flash messages and navigation links-->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <ul>
+          {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+  
+      {% if loggedIn %}
+          <form action="/logout" method="POST">
+              <button type="submit">Logout</button>
+          </form>
+      {% else %}
+      {% endif %}
 
         <!-- light mode and dark mode button -->
         <title>Light/Dark Mode Toggle</title>

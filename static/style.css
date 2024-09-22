@@ -36,6 +36,15 @@ footer {
   color: white;
 }
   
+/* big paragraphs */
+.large-times {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 20px;
+  padding-left: 300px;
+  padding-right: 300px;
+
+}
+
 ft{
   font-size: small;
 }

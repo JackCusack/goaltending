@@ -8,24 +8,16 @@
         <h2>Sign Up</h2>
         <form action="/signup" method="post">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required style="height:20px; width:200px"><br><br>
+            <input type="text" id="username" name="username" maxlength="30" required style="height:20px; width:200px"><br><br>
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
+            <input type="password" id="password" name="password" maxlength="30" required><br><br>
             <input type="submit" value="Sign Up">
         </form>
     
     
         <p>Already have an account? <a href="http://127.0.0.1:5000/login">Login</a></p>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+      
     </center>
     </div>
         {%endblock%}
